@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.example.jiaofenghangks"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 1										//schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;
+        daoPackage 'com.example.jiaofenghangks.dao'	//daoPackage --> dao的包名，包名默认是entity所在的包；
+        targetGenDir 'src/main/java'						//targetGenDir --> 生成数据库文件的目录;
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    /*okhttp*/
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    /*SmartRefreshLayout*/
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    /*卡片*/
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    /*banner依赖*/
+    implementation 'com.youth.banner:banner:1.4.10'
+    /*Recyclerview依赖*/
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    /*侧滑依赖*/
+    implementation 'com.android.support:design:28.0.0'
+    /*添加glide依赖*/
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    /*实现Mvp解析数据显示到recylerview并存入数据库查询的依赖*/
+    //RxJava+retrofit
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'//retrofit 库
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'//转换器，请求结果转换成Model
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'//配合Rxjava 使用
+    implementation 'com.google.code.gson:gson:2.6.2'//Gson 库
+    //design
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-22'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-22'//没有使用特殊Header，可以不加这行
+    //greendao
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+}
